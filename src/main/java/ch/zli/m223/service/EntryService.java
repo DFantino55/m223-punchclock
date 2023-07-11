@@ -21,14 +21,16 @@ public class EntryService {
     }
 
     @Transactional
-    public Entry editEntry(Entry entry) {
-        entityManager.;
-        return entry;
+    public void editEntry(Long id, Entry entry) {
+        Entry newEntry = findById(id);
+        newEntry.setCheckIn(entry.getCheckIn());
+        newEntry.setCheckOut(entry.getCheckOut());
+        entityManager.merge(newEntry);
     }
 
     @Transactional
-    public void deleteEntry(Entry entry) {
-        entityManager.remove(entry);
+    public void deleteEntry(Long id) {
+        entityManager.remove(findById(id));
     }
 
     public List<Entry> findAll() {
