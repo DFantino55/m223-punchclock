@@ -19,6 +19,11 @@ public class Entry {
   @Column(nullable = false)
   private LocalDateTime checkOut;
 
+  /* 
+  @Column(nullable = false)
+  private Long CategoryId;
+  */
+
   public Long getId() {
     return id;
   }
@@ -42,4 +47,14 @@ public class Entry {
   public void setCheckOut(LocalDateTime checkOut) {
     this.checkOut = checkOut;
   }
+
+  /* 
+  public Long getCategoryId() {
+    return CategoryId;
+  }
+
+  public void setCategoryId(Long CategoryId) {
+    this.CategoryId = CategoryId;
+  }
+  */
 }
