@@ -1,18 +1,31 @@
 package ch.zli.m223.model;
 
-import javax.persistence.*;
-
+import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Tag {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Schema(readOnly = true)
-  private Long id;
+  private long id;
 
   @Column(nullable = false)
   private String title;
+
+  @ManyToMany(mappedBy = "tags")
+  @JsonIgnore
+  @Fetch(FetchMode.JOIN)
+  private Set<Entry> entries;
 
 
   public Long getId() {
