@@ -20,8 +20,23 @@ public class EntryService {
         return entry;
     }
 
+    @Transactional
+    public Entry editEntry(Entry entry) {
+        entityManager.;
+        return entry;
+    }
+
+    @Transactional
+    public void deleteEntry(Entry entry) {
+        entityManager.remove(entry);
+    }
+
     public List<Entry> findAll() {
         var query = entityManager.createQuery("FROM Entry", Entry.class);
         return query.getResultList();
+    }
+
+    public Entry findById(Long id) {
+        return entityManager.find(Entry.class, id);
     }
 }
